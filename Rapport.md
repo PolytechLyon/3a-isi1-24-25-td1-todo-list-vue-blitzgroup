@@ -1,5 +1,4 @@
 # Compte rendu
 
-## Binôme
-- NOM Prénom
-- NOM Prénom
+## Monôme
+- PRIBYLSKI Simon
