@@ -8,8 +8,8 @@ let editMode = ref(false);
 let currentEditIndex = ref(0);
 
 function ajouterTodo() {
-	const newTodo = document.getElementById("new-todo-item-title").value;
-	titres.value.push(newTodo);
+	titres.value.push(document.getElementById("new-todo-item-title").value);
+	document.getElementById("new-todo-item-title").value = "";
 }
 
 function editTodo(todoIndex) {
@@ -25,6 +25,7 @@ function deleteTodo(title) {
 function confirmEdit() {
 	const newTitle = document.getElementById("edit-todo-item-title").value;
 	titres.value[currentEditIndex.value] = newTitle;
+	editMode.value = false;
 }
 
 </script>
@@ -43,7 +44,7 @@ function confirmEdit() {
 	<div id="edit-item" :hidden="!editMode">
 		<h3>Edit todo item</h3>
 		<label for="edit-todo-item-title">Title</label>
-		<input id="edit-todo-item-title" :value="titres[currentEditIndex]"/>
+		<input id="edit-todo-item-title" :value="titres[currentEditIndex]" @keydown.enter="confirmEdit"/>
 		<button id="edit-todo-item-confirm" @click="confirmEdit">Confirm</button>
 		<button id="edit-todo-item-cancel" @click="editMode = false">Cancel</button>
 	</div>
